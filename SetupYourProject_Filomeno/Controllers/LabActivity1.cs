@@ -9,15 +9,15 @@ namespace SetupYourProject_Filomeno.Controllers
             {
                 new Student()
                 {
-                    FirstName = "Cyril", LastName = "Filomeno", Course = Course.BSIT, AdmissionDate = DateTime.Parse("2022-08-26"), GPA = 1.5, Email = "cyrilangelo.filomeno.cics@ust.edu.ph"
+                    Id = 1, FirstName = "Cyril", LastName = "Filomeno", Course = Course.BSIT, AdmissionDate = DateTime.Parse("2022-08-26"), GPA = 1.5, Email = "cyrilangelo.filomeno.cics@ust.edu.ph"
                 },
                 new Student()
                     {
-                    FirstName = "Caster", LastName = "Lapuz", Course = Course.BSIS, AdmissionDate = DateTime.Parse("2022-08-27"), GPA = 1.6, Email = "castertroi.lapuz.cics@ust.edu.ph"
+                    Id = 2, FirstName = "Caster", LastName = "Lapuz", Course = Course.BSIS, AdmissionDate = DateTime.Parse("2022-08-27"), GPA = 1.6, Email = "castertroi.lapuz.cics@ust.edu.ph"
                 },
                 new Student()
                 {
-                    FirstName = "Rico", LastName = "Nieto", Course = Course.BSIS, AdmissionDate = DateTime.Parse("2022-08-28"), GPA = 1.8, Email = "rico.nieto.cics@ust.edu.ph"
+                    Id = 3, FirstName = "Rico", LastName = "Nieto", Course = Course.BSIS, AdmissionDate = DateTime.Parse("2022-08-28"), GPA = 1.8, Email = "rico.nieto.cics@ust.edu.ph"
                 }
             };
 
@@ -53,5 +53,16 @@ namespace SetupYourProject_Filomeno.Controllers
             }
             return NotFound();
        }
+
+        public IActionResult ShowDetail(int id)
+        {
+            Student? student  = StudentList.FirstOrDefault(Student => Student.Id == id);
+
+            if (student != null)
+            {
+                return View(student);
+            }
+            return NotFound();
+        }
     }
 }
